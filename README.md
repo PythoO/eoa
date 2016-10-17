@@ -1,4 +1,4 @@
-# E.O.A Extrem operationg Assistant.
+# E.O.A Extreme operating Assistant.
 ===
 
-A simple virtual assistant.
+E.O.A is a virtual assistant, made in pygame.
