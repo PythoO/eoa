@@ -1,10 +1,8 @@
 # coding: utf8
 
 from neuron.forecast import forecast_currently
-from sense.voice import speech
 from text import Text
 import pygame
-import config
 
 
 class Forecast:
@@ -14,7 +12,7 @@ class Forecast:
         self.display_info = pygame.display.Info()
         self.screen_width = self.display_info.current_w
         self.screen_height = self.display_info.current_h
-        self.currently = currently = forecast_currently()
+        self.currently = forecast_currently()
 
     def draw(self):
         self.draw_temp()
@@ -23,12 +21,6 @@ class Forecast:
         self.draw_humidity()
         self.draw_wind_speed()
         self.draw_visibility()
-
-
-        # Text(self.screen, 'visibility: ' + str(currently.visibility), 60, 115, 200, 10)
-
-        # speech(currently.summary)
-        # speech(str(currently.temperature) + ' celsius.')
 
     def draw_temp(self):
         """ Function to draw temperature frame. """

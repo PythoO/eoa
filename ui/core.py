@@ -20,7 +20,8 @@ class UI:
         self.screen_height = self.display_info.current_h
 
     def background(self):
-        bg = pygame.image.load('bg.jpg').convert()
+        bg = pygame.image.load('img/bg.jpg').convert()
+        bg = pygame.transform.scale(bg, (self.screen_width, self.screen_height))
         self.screen.blit(bg, [0, 0])
 
     def header(self):
@@ -56,10 +57,13 @@ class UI:
         Text(self.screen, new_date, self.screen_width -110, 35, 100, 50, 10)
         # Forecast
         Button(self.screen, self.profile, self.colors, {'x': 10, 'y': 60, 'width': 50, 'height': 50}, None,
-               self.get_forecast, 'img/cloud.png')
+               self.get_forecast, None)
+        # twitter
+        Button(self.screen, self.profile, self.colors, {'x': 10, 'y': 130, 'width': 50, 'height': 50}, None,
+               self.get_tweet, None)
         # Exit
         Button(self.screen, self.profile, self.colors, {'x': self.screen_width - 55, 'y': 0, 'width': 50, 'height': 50}, None,
-               self.get_exit, 'img/exit.png')
+               self.get_exit, None)
 
     def create_frame(self):
         # main frame
@@ -75,13 +79,16 @@ class UI:
     def get_forecast(self):
         self.reset_screens()
         config.screens['forecast'] = True
-        print config.screens
+
+    def get_tweet(self):
+        self.reset_screens()
+        config.screens['twitter'] = True
 
     def get_exit(self):
         self.reset_screens()
         config.screens['exit'] = True
 
-    def reset_screens(self):
+    @staticmethod
+    def reset_screens():
         for screen in config.screens:
-            print screen
             config.screens[screen] = False

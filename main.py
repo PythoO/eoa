@@ -17,6 +17,7 @@ from sense import voice
 from ui.core import UI
 from ui.screen_switch import ScreenSwitch
 from ui.forecast import Forecast
+from ui.twitter import Twitter
 
 # Import neuron.
 import neuron.profile as profile
@@ -45,6 +46,7 @@ profile.load_profile()
 core_screen = UI(screen, profile, colors)
 home_screen = ''
 forecast_screen = Forecast(screen, colors)
+twitter_screen = Twitter(screen, colors)
 todo_screen = ''
 map_screen = ''
 sw = ScreenSwitch()
@@ -67,6 +69,8 @@ while 1:
         if config.screens[display_screen]:
             if display_screen == 'forecast':
                 forecast_screen.draw()
+            if display_screen == 'twitter':
+                twitter_screen.draw()
             if display_screen == 'exit':
                 sys.exit()
 
